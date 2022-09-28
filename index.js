@@ -1,7 +1,10 @@
 var readlineSync = require('readline-sync')
 
 var userName = readlineSync.question('Welcome to quiz game. To play the game enter your name : ')
-console.log(`Hello👋 ${userName}, let's begin the game`)
+
+var chalk = require('chalk');
+
+console.log(chalk.yellow(`Hello👋 ${userName}, let's begin the game`))
 
 console.log('---------------------\n')
 
@@ -43,14 +46,14 @@ function playGame(question, answer) {
   
   if(userAnswer.toUpperCase() === answer.toUpperCase() ) {
     score =  score + 10;
-    console.log('You typed : '+ userAnswer + ' ')
-    console.log('Your are correct')
+    console.log('You typed : '+ chalk.green(userAnswer) + ' ')
+    console.log(chalk.green('Your are correct'))
     console.log('Score : ' + score);
     console.log('----------\n')
   }
   else {
-    console.log('You typed : ' + userAnswer + ' ');
-    console.log('You are wrong');
+    console.log('You typed : ' + chalk.red(userAnswer) + ' ');
+    console.log(chalk.red('You are wrong'));
     console.log('Score : ' + score);
     console.log('----------\n')
   }
@@ -63,11 +66,15 @@ for(let i=0;i<questionList.length;i++) {
 
 console.log('Quiz is over !! ')
 console.log('------------------')
-console.log('Your final score is : ' + score);
+console.log(chalk.yellow('Your final score is : ' + score));
 
 if(score > highScore) {
-  console.log("Congrats " + userName + ", you broke the high score 🏆\n send me the screenshot of your score to add your name to high score.")
+  console.log(chalk.blue("Congrats " + userName + ", you broke the high score 🏆\n send me the screenshot of your score to add your name to high score."))
 }
+
+  
+
+
 
   
 
